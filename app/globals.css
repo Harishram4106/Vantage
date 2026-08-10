@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbfafc;
+  --foreground: #111013;
+  --muted: #6d6875;
+  --line: rgba(28, 24, 33, 0.1);
+  --glass: rgba(255, 255, 255, 0.68);
+  --glass-strong: rgba(255, 255, 255, 0.82);
+  --purple: #8f78ff;
+  --purple-soft: #b9adff;
+  --magenta: #df6ccf;
+  --emerald: #27b386;
+  --ink: #17141c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Neue Montreal", var(--font-geist-sans), Inter, "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(180deg, rgba(251, 250, 252, 0) 0%, #fbfafc 44rem),
+    radial-gradient(circle at 12% 18%, rgba(185, 173, 255, 0.18), transparent 28rem),
+    radial-gradient(circle at 88% 12%, rgba(223, 108, 207, 0.12), transparent 26rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: "Neue Montreal", var(--font-geist-sans), Inter, "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(143, 120, 255, 0.22);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38));
+  box-shadow: 0 24px 80px rgba(31, 27, 45, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(26px) saturate(1.18);
+}
+
+.glass-dark {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, rgba(18, 15, 24, 0.58), rgba(18, 15, 24, 0.26));
+  box-shadow: 0 24px 90px rgba(9, 8, 14, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(28px) saturate(1.08);
+}
+
+.premium-border {
+  position: relative;
+}
+
+.premium-border::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(143, 120, 255, 0.55), rgba(223, 108, 207, 0.32), rgba(39, 179, 134, 0.28));
+  content: "";
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.mouse-glow {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+@media (pointer: fine) {
+  .mouse-glow {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
